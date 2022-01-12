@@ -1,0 +1,1 @@
+main	C:\C++\ECEGR2020\Lab_0\main.c	/^int main(int argc, char **argv)$/;"	function	line:3	signature:(int argc, char **argv)	returns:int 
