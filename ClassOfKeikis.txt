@@ -1,0 +1,17 @@
+Number of Keikis in the class: 3
+
+ID Number: 2342
+First Name: Barack
+Last Name: Obama
+GPA: 8.000000
+
+ID Number: 2342
+First Name: Rudy
+Last Name: Redhawk
+GPA: 5.000000
+
+ID Number: 2313
+First Name: Sean
+Last Name: Ceria
+GPA: 1.000000
+
