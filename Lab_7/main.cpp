@@ -12,7 +12,6 @@ bool instanceof(const SrcType* src)
   return dynamic_cast<const DstType*>(src) != nullptr;
 }
 
-/////////////////////////////////////////////////////////ALL CLASSES///////////////////////////////////////////////////////////////
 
 //--------------------------------------------------------People Class---------------------------------------------------------
 class People
@@ -146,7 +145,7 @@ public:
 	virtual~Employee(){
 		//Destructor not needed
 	}
-	//-----------------------Set/Get Funtctions------------------------------
+	//-----------------------Set_Get Funtctions------------------------------
 	void setSalary(float salary){
 		this->salary = salary;
 	}
@@ -191,7 +190,7 @@ public:
 	virtual~Professor(){
 		//Default destructor for non-allocated memory
 	}
-	//-----------------------Set/Get Funtctions------------------------------
+	//-----------------------Set_Get Funtctions------------------------------
 	void setTenure(bool tenure){
 		this->tenure = tenure;
 	}
@@ -210,7 +209,6 @@ public:
 People* person1 = NULL;
 
 
-//////////////////////////////////////////////////////////UTILITY FUNCTIONS////////////////////////////////////////////////////////////////////////
 void addNode(People* newNode){
 	People* node = person1;
     if( person1 == NULL )
@@ -290,11 +288,11 @@ void reads(){
 				opening >> word;
 				opening >> word;
 				opening >> word;
-				opening >> firstname; //First name
+				opening >> firstname; //Firstname
 				opening >> word;
 				opening >> word;
 				opening >> word;
-				opening >> lastname; //Last name
+				opening >> lastname; //Lastname
 				opening >> word;
 				opening >> word;
 				opening >> salary;//Salary
@@ -365,7 +363,7 @@ void reads(){
 		opening >> word;
 		}
 		opening.close();
-		cout << "File read successfully" << endl;
+		cout << "File read successfully!!!" << endl;
 	}
 	cout << endl;
 }
@@ -376,7 +374,7 @@ void savelist(){
 	ofstream opening;
 	opening.open("ClassOfKeikis.txt");
 	if(!opening.is_open()){
-		cout << "Could not open file" << endl;
+		cout << "Could not open file..." << endl;
 	}
 	else{
 		People* headNode = person1; 
@@ -427,7 +425,7 @@ void savelist(){
 					print2 = "Computer Science";
 				}
 				else if(professor->getDepartment() == 4){
-					print2 = "Theology";
+					print2 = "Physics";
 				}
 				opening << "Department: " << print2 << endl;
 			}
@@ -509,30 +507,28 @@ void printPeople(){
 
 void deletePerson(People** head_ref, int ID){
 	People *temp = *head_ref, *prev;
-		// If head node itself holds the student to be deleted
+		// If head node holds the student to be deleted...
 		if (temp != NULL && temp->getID() == ID) {
 			*head_ref = temp->getnext(); // Changed head
-			delete temp; // free old head
+			delete temp; // frees memory of old headNode
 			return;
 		}
 	 
-		// Search for the student to be deleted, keep track of the
-		// previous node as we need to change 'prev->next'
 		while (temp != NULL && temp->getID() != ID) {
 			prev = temp;
 			temp = temp->getnext();
 		}
 		
-		// If student was not present in linked list
+		// If student isnt present in linked list...
 		if (temp == NULL)
 			return;
 			
-		// Unlink the node from linked list
+		// Unlinking of the the nodes from the linked list
 		prev->setnext(temp->getnext());
 		delete temp; // Free memory
 }
 
-////////////////////////////////////////////////////////////STUDENT FUNCTIONS//////////////////////////////////////////////////////////////////////
+//-----------------------------------------------STUDENT FUNCTIONS------------------------------------------------------------
 void updateStudent(int id){
 	People* node = person1;
 	People* previous = node;
@@ -679,7 +675,7 @@ void studentMenu(){
 	}
 }
 
-///////////////////////////////////////////////////////////EMPLOYEE FUNCTIONS///////////////////////////////////////////////////////////////////////
+//----------------------------------------------------------------EMPLOYEE FUNCTIONS------------------------------------------------------------
 void updateEmployee(int id){
 	People* node = person1;
 	People* previous = node;
@@ -713,12 +709,12 @@ void updateEmployee(int id){
 				else if(userinput == 'c'){
 					cout << "Enter new Last Name: ";
 					cin >> lastname;
-					employee->setLastName(lastname);				
+					employee->setLastName(lastname);
 				}
 				else if(userinput == 'd'){
 					cout << "Enter new salary: ";
 					cin >> tempGPA;
-					employee->setSalary(tempGPA);		
+					employee->setSalary(tempGPA);
 					if(previous == node){
 						employee->setnext(NULL);
 						addNode(employee);
@@ -729,7 +725,7 @@ void updateEmployee(int id){
 					}
 				}
 				else{
-					cout << "Invalid Input!!" << endl;
+					cout << "Invalid Input..." << endl;
 				}
 			}
 		}
@@ -742,7 +738,7 @@ void printEmployees(){
 	People* node = person1;
 	int count = 0;
 	if(node == NULL){
-		cout << "List is empty" << endl;
+		cout << "List is empty..." << endl;
 	}
 	else{
 		while(node != NULL){
@@ -757,7 +753,7 @@ void printEmployees(){
 		node = node->getnext();
 		}
 		if(count == 0){
-			cout << "No Employees in the list" << endl;
+			cout << "No Employees in the list..." << endl;
 		}
 	}
 }
@@ -802,39 +798,38 @@ void employeeMenu(){
 		}
 		else if(input == 'B'){
 			newEmployee();
-			cout << "Employee Added!!" << endl;
+			cout << "Employee successfully added!!" << endl;
 		}
 		else if(input == 'C'){
 			cout << "Enter the ID of the employee you want to delete: ";
 			cin >> IDsearch2;
 			deletePerson(&person1, IDsearch2);
-			cout << "Employee Deleted!!" << endl;
+			cout << "Employee successfully deleted!!" << endl;
 		}
 		else if(input == 'D'){
 			cout << "Enter the ID of the employee you want to update: ";
 			cin >> IDsearch;
 			updateEmployee(IDsearch);
-			cout << "Employee Updated!" << endl;
+			cout << "Employee successfully updated!" << endl;
 		}
 		else if(input == 'E'){
 			break;
 		}
 		else{
-			cout << "Invalid input!" << endl;
+			cout << "Invalid input..." << endl;
 		}
 	}
 }
 
-//////////////////////////////////////////////////////////PROFESSOR FUNCTIONS////////////////////////////////////////////////////////////////////////
+//------------------------------------------------------------------PROFESSOR FUNCTIONS-----------------------------------------------------
 void updateProfessor(int id){
 	People* node = person1;
-	//People* previous = node;
 	char userinput;
 	int first;
 	string firstname;
 	string lastname;
 	float last;
-	cout << "What would you like to change?" << endl;
+	cout << "What needs to be updated?" << endl;
 	cout << "a) ID" << endl;
 	cout << "b) First Name" << endl;
 	cout << "c) Last Name" << endl;
@@ -863,15 +858,15 @@ void updateProfessor(int id){
 				else if(userinput == 'c'){
 					cout << "Enter new Last Name: ";
 					cin >> lastname;
-					professor->setLastName(lastname);				
+					professor->setLastName(lastname);
 				}
 				else if(userinput == 'd'){
 					cout << "Enter new salary: ";
 					cin >> last;
-					professor->setSalary(last);		
+					professor->setSalary(last);
 				}
 				else if(userinput == 'e'){
-					cout << "Enter new tenur status (yes or no)" << endl;
+					cout << "Enter new tenure status (yes or no): " << endl;
 					cin >> tenure;
 					if(tenure == "yes"){
 						professor->setTenure(true);
@@ -914,7 +909,6 @@ void updateProfessor(int id){
 				}
 			}
 		}
-	//previous = node;
 	node = node->getnext();
 	}
 }
@@ -923,7 +917,7 @@ void printProfessors(){
 	People* node = person1;
 	int count = 0;
 	if(node == NULL){
-		cout << "List is empty" << endl;
+		cout << "List is empty..." << endl;
 	}
 	else{
 		while(node != NULL){
@@ -987,7 +981,7 @@ void newProfessor(){
 	cin >> salary;
 	
 	while(2000){
-		cout << "Tenured? (enter yes or no): ";
+		cout << "Tenured? Enter yes or no: ";
 		cin >> yn;
 		if(yn == "yes"){
 			tenured = true;
@@ -998,7 +992,7 @@ void newProfessor(){
 			break;
 		}
 		else{
-			cout << "Invalid Input!" << endl;
+			cout << "Invalid Input..." << endl;
 		}
 	}
 	
@@ -1052,19 +1046,19 @@ void professorMenu(){
 		}
 		else if(input == 'B'){
 			newProfessor();
-			cout << "Professor Added!!" << endl;
+			cout << "Professor successfully added!" << endl;
 		}
 		else if(input == 'C'){
 			cout << "Enter the ID of the professor you want to delete: ";
 			cin >> IDsearch2;
 			deletePerson(&person1, IDsearch2);
-			cout << "Professor Deleted!!" << endl;
+			cout << "Professor successfully deleted!" << endl;
 		}
 		else if(input == 'D'){
 			cout << "Enter the ID of the professor you want to update: ";
 			cin >> IDsearch;
 			updateProfessor(IDsearch);
-			cout << "Professor Updated" << endl;
+			cout << "Professor successfully updated!" << endl;
 		}
 		else if(input == 'E'){
 			break;
@@ -1075,7 +1069,7 @@ void professorMenu(){
 	}
 }
 
-//-------------------------------------------------------Main Function-----------------------------------------------------------
+//-------------------------------------------------------Main-----------------------------------------------------------
 int main(){
 	reads();
 	char option;
@@ -1106,11 +1100,11 @@ int main(){
 		}
 		else if(option == '5'){
 			savelist();
-			cout << "Program Exited" << endl;
+			cout << "Exiting Program... Goodbye!" << endl;
 			break;
 		}
 		else{
-			cout << "Invalid Input" << endl;
+			cout << "Invalid Input..." << endl;
 		}
 	}
 return 0;
