@@ -194,7 +194,7 @@ void addNode(Student* newNode){
 		}
 		currentnode = currentnode->getNext(); // Moves down the list of nodes
 	}
-	currentnode->setNext(newNode); // EXPLAINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+	currentnode->setNext(newNode); 
 	newNode->setNext(NULL);
 	return;
 }
@@ -231,7 +231,7 @@ void NewStudent(){
 	
 	cout << "Enter the First Name: ";
 	cin >> firstinput;
-	newfirstname = (char*) malloc(strlen((firstinput.c_str())+1)); //EXPLAINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+	newfirstname = (char*) malloc(strlen((firstinput.c_str())+1)); 
 	strcpy(newfirstname, firstinput.c_str());
 
 	cout << "Enter the Last Name: ";
@@ -251,7 +251,7 @@ void NewStudent(){
 }
 
 // Deletes new student
-void deleteStudent(Student** head_ref, int ID){ // EXPLAINNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+void deleteStudent(Student** head_ref, int ID){ 
 	// Store head node
     Student *temp = *head_ref, *prev;
  
@@ -334,7 +334,7 @@ void updateStudent(Student* head, int id){
 						
 			}
 			else{
-				cout << "Invalid Input!!" << endl;
+				cout << "Invalid Input..." << endl;
 			}
 		}
 	previous = current;
@@ -395,12 +395,13 @@ void reads(){
 		opening >> word;
 		opening >> word;
 		//--------------------
+		/*opening >> word;
 		opening >> word;
-		opening >> word;
-		opening >> word;
+		opening >> word;*/
 		while(opening.good()){
 			opening >> IDw;
 			
+			opening >> word;
 			opening >> word;
 			opening >> word;
 
@@ -410,15 +411,17 @@ void reads(){
 			
 			opening >> word;
 			opening >> word;
+			opening >> word;
 
 			opening >> word;
 			lastname = (char*) malloc(strlen((word.c_str())+1));
 			strcpy(lastname, word.c_str());
 	
 			opening >> word;
+			opening >> word;
 			opening >> GPAw;
 
-			Student* newstud = new Student(IDw, firstname, lastname, GPAw); //Make a pointer and allocate memory somehow
+			Student* newstud = new Student(IDw, firstname, lastname, GPAw); 
 			addNode(newstud);
 			free(firstname);
 			free(lastname);
@@ -439,7 +442,7 @@ void Menu1(){
 	cout << "2) Add Student" << endl;
 	cout << "3) Remove Student" << endl;
 	cout << "4) Update Student" << endl;
-	cout << "5) End Program" << endl;
+	cout << "5) Exit Program" << endl;
 	
 	char input;
 	int IDsearch;
