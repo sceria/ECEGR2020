@@ -343,9 +343,9 @@ void updateStudent(Student* head, int id){
 }
 
 void savelist(){
-	ofstream opening; // output file stream; used to write info into the file
-	opening.open("ClassOfKeikis.txt");
-	if(!opening.is_open()){
+	ofstream glasses; // output file stream; used to write info into the file
+	glasses.open("ClassOfKeikis.txt");
+	if(!glasses.is_open()){
 		cout << "Error: Cannot Open File..." << endl;
 	}
 	else{
@@ -357,27 +357,27 @@ void savelist(){
 			top = top->getNext(); 
 		}
 		
-		opening << "Number of students: " << studentCount << endl;
+		glasses << "Number of students: " << studentCount << endl;
 		
 		top = student1; 
 		while(top != NULL) 
 		{
-			opening << endl;
-			opening << "Student ID: "<< top->getID() << endl;
-			opening << "Student First Name: "<< top->getFirstName() << endl;
-			opening << "Student Last Name: "<< top->getLastName() << endl;
-			opening << "Student GPA: "<< top->getGPA() << endl;
+			glasses << endl;
+			glasses << "Student ID: "<< top->getID() << endl;
+			glasses << "Student First Name: "<< top->getFirstName() << endl;
+			glasses << "Student Last Name: "<< top->getLastName() << endl;
+			glasses << "Student GPA: "<< top->getGPA() << endl;
 			top = top->getNext();
 		}
-		opening.close(); 
+		glasses.close(); 
 	}
 }
 
 void reads(){
-	ifstream opening; // input file stream; used to read info from file streams
-	opening.open("ClassOfKeikis.txt");
+	ifstream glasses; // input file stream; used to read info from file streams
+	glasses.open("ClassOfKeikis.txt");
 	
-	if(!opening.is_open()){
+	if(!glasses.is_open()){
 		cout << "Error: Cannot Open File..." << endl;
 	}
 	else{
@@ -388,48 +388,48 @@ void reads(){
 		char* firstname = NULL;
 		char* lastname = NULL;
 		float GPAw = 0.0;
-		opening >> word; // manually iterating through each word in the file
-		opening >> word;
-		opening >> word;
-		opening >> word;
-		opening >> word;
-		opening >> word;
+		glasses >> word; // manually iterating through each word in the file
+		glasses >> word;
+		glasses >> word;
+		glasses >> word;
+		glasses >> word;
+		glasses >> word;
 		//--------------------
-		/*opening >> word;
-		opening >> word;
-		opening >> word;*/
-		while(opening.good()){
-			opening >> IDw;
+		/*glasses >> word;
+		glasses >> word;
+		glasses >> word;*/
+		while(glasses.good()){
+			glasses >> IDw;
 			
-			opening >> word;
-			opening >> word;
-			opening >> word;
+			glasses >> word;
+			glasses >> word;
+			glasses >> word;
 
-			opening >> word;			
+			glasses >> word;			
 			firstname = (char*) malloc(strlen((word.c_str())+1));
 			strcpy(firstname, word.c_str());
 			
-			opening >> word;
-			opening >> word;
-			opening >> word;
+			glasses >> word;
+			glasses >> word;
+			glasses >> word;
 
-			opening >> word;
+			glasses >> word;
 			lastname = (char*) malloc(strlen((word.c_str())+1));
 			strcpy(lastname, word.c_str());
 	
-			opening >> word;
-			opening >> word;
-			opening >> GPAw;
+			glasses >> word;
+			glasses >> word;
+			glasses >> GPAw;
 
 			Student* newstud = new Student(IDw, firstname, lastname, GPAw); 
 			addNode(newstud);
 			free(firstname);
 			free(lastname);
 			
-			opening >> word;
-			opening >> word;
+			glasses >> word;
+			glasses >> word;
 		}
-		opening.close();
+		glasses.close();
 		cout << "File read successfully!" << endl;
 	}
 	cout << endl;
