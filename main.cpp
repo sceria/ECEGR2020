@@ -16,16 +16,17 @@ int bico(int power, int index){
 	start.push_back(1);
 	start.push_back(1);
 	for(int i = 0; i<power; i++){ //for loop creates the rows of Pascal's triangle
-		for(int j = 0; j<=i+1; j++){ // j var for number of entries per row (one more entry than prev. row)
-			if(j == 0||j==i+1){
-				next.push_back(1);
+	    next.push_back(1); // creates first 1 of the row
+		for(int j=0; j<=i+1; j++){ // j var for number of entries per row (one more entry than prev. row)
+			if (j==i+1){
+			    next.push_back(1);
 			}
 			else{
-				int sum; // will hold sum of two entries from previous row
-				sum = (start.at(i) + start.at(i+1)); 
-				next.push_back(sum); // inserts sum into new vector which would again be worked off of to create next row
+			    
 			}
-		for 
+		}
+		//for 
+		start.clear();
 		start = next; //
 		}
 	}
