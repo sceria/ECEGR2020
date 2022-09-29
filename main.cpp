@@ -15,28 +15,40 @@ int bico(int power, int index){
 	vector<int> next; // next row 
 	start.push_back(1);
 	start.push_back(1);
-	for(int i = 0; i<power; i++){ //for loop creates the rows of Pascal's triangle
+    //for loop creates the rows of Pascal's triangle
+	for(int i = 0; i<power-1; i++){ 
+	    next.clear();//clears next vector, so new next vector can be constructed
 	    next.push_back(1); // creates first 1 of the row
-		for(int j=0; j<=i+1; j++){ // j var for number of entries per row (one more entry than prev. row)
-			if (j==i+1){
-			    next.push_back(1);
+		for(int j=0; j<=i+1; j++){ // j var for number of entries per row 
+			if (j==i+1){ // will push back a 1 once it's at the end of the vector
+			    next.push_back(1);  
 			}
-			else{
-			    
-			}
+			else{ // takes the sum of entries from the previous row and uses it in next vector
+			    next.push_back(start.at(j) + start.at(j+1));  
+			    }
 		}
-		//for 
-		start.clear();
-		start = next; //
+		start.clear(); // clears the start vector 
+		start = next; // makes start vector equal to the newly built vector to 
+		               // to work off of it in the next iteration
 		}
-	}
-	//---------------Displays Rows of the vectors-----------------------------------------------------------------------------------
+	//---------------Displays Rows of the vectors-------------------------------
 	// For loop to display the vector
-	for (int s=0; s<next.size(); s++){
-		cout<<next[s]<<" ";
+	//for (int s=0; s<next.size(); s++){
+	//	cout<<next[s]<<" ";
+	//}
+    //cout << endl;
+	//--------------------------------------------------------------------------
+	//next.at(index);
+	
+	// Following if statement covers the indices with a zero coefficient
+	int output;
+	if((index>power)||(index<0)){
+	    output=0;
 	}
-    cout << endl;
-	//-------------------------------------------------------------------------------------------------
+	else{
+	    output=next.at(index);
+	}
+	return output; // all functions need a return statement
 }
 
 int main()
@@ -49,7 +61,7 @@ int main()
     cout << "Input the the index of the coefficient: "; cin >> index;
     cout << endl;
 	
-	bico(power, index);
+	cout<<bico(power, index); 
 
     return 0;
 }
