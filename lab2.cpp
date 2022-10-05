@@ -4,19 +4,19 @@ using namespace std;
 
 //-----------------------GRADE CONVERTER CODE-----------------------------
 char GradeConverter(int grade){
-    if(grade >=0 && grade <=59){
+    if(grade >=0 && grade <=59){ // [0, 59] is grade range for F grade
         cout << "This is a F letter grade.";
     }
-    else if(grade>=60 && grade<=69){
+    else if(grade>=60 && grade<=69){ // [60, 69] is grade range for D grade
         cout << "This is a D letter grade.";
     }
-    else if(grade>=70 && grade<=79){
+    else if(grade>=70 && grade<=79){ // [70, 79] is grade range for C grade
         cout << "This is a C letter grade.";
     }
-    else if(grade>=80 && grade<=89){
+    else if(grade>=80 && grade<=89){ // [80, 89] is grade range for B grade
         cout << "This is a B letter grade.";
     }
-    else if (grade>=90 && grade<=100){
+    else if (grade>=90 && grade<=100){ // [90, 100] is grade range for A grade
         cout << "This is an A letter grade.";
     }
     return 0;
@@ -35,7 +35,7 @@ class Box
     
     
     // Methods
-    void print(){
+    void print(){ // will be used to return the box's dimensions
         cout << "Box length: " << length << endl;
         cout << "Box width: " << width << endl;
         cout << "Box height: " << height << endl;
@@ -45,7 +45,7 @@ class Box
 };
 
 Box AddBox(Box box1, Box box2){
-    Box Box3;
+    Box Box3; // creation of Box3 object as it utilizes the dimensions of box1 and box2
     Box3.height = box1.height + box2.height;
         if(box1.length <= box2.length){
             Box3.length = box2.length;
@@ -159,7 +159,7 @@ int main()
     box1.width=bwid1;
     box1.height=bhei1;
     
-    // User input for bix2 dimensions
+    // User input for b0x2 dimensions
     cout << "Length of the second box: " << endl;
     cin >> bleng2;
     cout << "Width of the second box: " << endl;
