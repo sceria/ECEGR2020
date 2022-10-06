@@ -1,3 +1,8 @@
+// Lab 2 CPSC 2430
+// Code by Sean Ceria 
+// October 5, 2022
+
+//-----------------------------------------------------------------------
 #include <iostream>
 #include <string>
 using namespace std;
